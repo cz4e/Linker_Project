@@ -132,7 +132,7 @@
 #define	SHF_COMPRESSED		0x800	/* Section contains compressed data. */
 #define	SHF_MASKOS	0x0ff00000	/* OS-specific semantics. */
 #define	SHF_MASKPROC	0xf0000000	/* Processor-specific semantics. */
-
+#define MAX_SECTION_FLAGS	13
 
 #define MAX_SECTION_TYPES	12
 char *SectionType[MAX_SECTION_TYPES] = {
@@ -257,3 +257,32 @@ char *MachineTypes[EM_NUMBER + 1] = {
 			"AArch64 (64-bit ARM) ",
 			"RISC-V ",
 		};
+
+#define MAX_SYMBOL_BIND		8
+
+const char *SymbolTableBind[MAX_SYMBOL_BIND] = {
+			"LOCAL",
+			"GLOBAL",
+			"WEAK",
+			"LOOS",
+			"UNIQUE",
+			"HIOS",
+			"LOPROC",
+			"HIPROC"
+			};
+#define MAX_SYMBOL_TYPE		16
+const char *SymbolTableType[MAX_SYMBOL_TYPE] = {
+			"NOTYPE",	/* 0 */
+			"OBJECT",	/* 1 */
+			"FUNC",		/* 2 */
+			"SECTION",	/* 3 */
+			"FILE",		/* 4 */
+			"COMMON",	/* 5 */
+			"TLS",		/* 6 */
+			"NUM",		/* 7 */
+			"LOOS",		/* 8 */
+			"IFUNC",	/* 9 */
+			"HIOS",	 	/* 10*/
+			"",
+			"HIPROC"	/* 12*/
+			};

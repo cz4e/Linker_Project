@@ -5,13 +5,44 @@
 
 typedef long error_t;
 
-Elf32_Ehdr	*Elf32_Ehdrs = NULL;			/* Two demensions array */
-Elf32_Shdr	*Elf32_Shdrs = NULL;			/* Two demensions array */
-Elf32_Sym	*Elf32_Syms = NULL;			/* Two demensions array */
-Elf32_Shdr	*Elf32_SectionStirngTable = NULL; /* Two demensions array*/
+struct ELFHeader {
+	Elf32_Ehdr	*Elf32_Ehdrs;
+	Elf32_Word	Elems;
+};
+
+struct ELFHeader Elf32_Ehdrs;
+
+
+struct SectionsHeaderEachFile {
+	Elf32_Shdr	*SectionsHeader;
+	Elf32_Word	Elems;
+};
+
+struct SectionsHeader {
+	struct SectionsHeaderEachFile  *Elf32_Shdrs;
+	Elf32_Word	Elems;
+};
+
+struct SectionsHeader *Elf32_Shdrs;
+
+
+struct SymbolTableEachFile {
+	Elf32_Sym	*SymbolTable;
+	Elf32_Word	Elems;
+};
+
+struct SymbolTables {
+	struct SymbolTableEachFile	*Elf32_Syms;
+	Elf32_Word	Elems;
+};
+
+struct SymbolTables *Elf32_Syms;
+
+
+
 
 error_t
-Elf32_ReadELF(char *FileName[]);			/* Analysis ELF32 format	*/
+Elf32_ReadELFHeader(char *FileName[]);			/* Analysis ELF32 format	*/
 
 error_t
 Elf32_getELFHeader(Elf32_Ehdr *Ehdr,FILE *ObjectFile);			/* Read ELF32 Header		*/
