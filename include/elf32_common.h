@@ -1,0 +1,15 @@
+#define ELF32_EHDR_HEADER(Entry)			(Elf32_Headers.ELFHeader + Entry)
+#define ELF32_EHDR_ELEMS(Entry)				(Elf32_Headers.Elems)
+#define ELF32_EHDR_HDR_ATTR(Entry,Attr)			(ELF32_EHDR_HEADER(Entry)->Attr)
+
+#define ELF32_SHDR_ENTRY(Entry)				(Elf32_SectionBase + Entry)
+#define ELF32_SHDR_ELEMS(Entry)				(ELF32_SHDR_ENTRY(Entry)->Elems)
+#define ELF32_SHDR_SECTIONS(Entry)			(ELF32_SHDR_ENTRY(Entry)->Sections)
+#define ELF32_SHDR_SECTION(Entry,Index)			(ELF32_SHDR_SECTIONS(Entry) + Index)
+#define ELF32_SHDR_SECTION_ATTR(Entry,Index,Attr)		(ELF32_SHDR_SECTION(Entry,Index)->Attr)
+
+#define ELF32_SYM_ENTRY(Entry)				(Elf32_SymTabBase + Entry)
+#define ELF32_SYM_ELEMS(Entry)				(ELF32_SYM_ENTRY(Entry)->Elems)
+#define ELF32_SYM_TABS(Entry)				(ELF32_SYM_ENTRY(Entry)->SymTab)
+#define ELF32_SYM_TAB(Entry,Index)			(ELF32_SYM_TABS(Entry) + Index)
+#define ELF32_SYM_TAB_ATTR(Entry,Index,Attr)			(ELF32_SYM_TAB(Entry,Index)->Attr)
